@@ -1,4 +1,4 @@
-# project_burguer
+# project_burger
 
 ## Project setup
 ```

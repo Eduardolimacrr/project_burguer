@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Message :msg="msg" v-show="msg"/>
+    <Message :msg="msg" v-show="msg" />
     <div>
-      <form id="burger-form" @submit="createBurger">
+      <form id="burger-form" method="POST" @submit="createBurger">
         <div class="input-container">
           <label for="nome">Nome do cliente: </label>
           <input
@@ -65,9 +65,9 @@ export default {
   name: "BurgerForm",
   data() {
     return {
-      paes: "selecioneSeuPao",
-      carnes: "selecioneSuaCarne",
-      opcionaisData: null,
+      paes: [],
+      carnes: [],
+      opcionaisData: [],
       nome: null,
       pao: null,
       carne: null,
@@ -101,7 +101,7 @@ export default {
 
       const req = await fetch("http://localhost:3000/burgers", {
         method: "POST",
-        headers: { "Content-Ty": "application/json" },
+        headers: { "Content-Type": "application/json" },  // Corrigido o erro de digitação
         body: dataJson,
       });
 

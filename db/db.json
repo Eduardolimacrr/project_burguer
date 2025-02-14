@@ -79,31 +79,37 @@
   ],
   "burgers": [
     {
-      "id": "8944",
-      "nome": null,
-      "carne": null,
-      "pao": null,
-      "opcionais": [],
-      "status": "Solicitado"
-    },
-    {
-      "id": "5230",
-      "nome": "João",
+      "id": "579e",
+      "nome": "joaoo",
       "carne": "Alcatra",
-      "pao": "3 Queijos",
+      "pao": "Italiano Branco",
       "opcionais": [
-        "Bacon",
-        "Tomate",
-        "Cheddar"
+        "Bacon"
       ],
       "status": "Solicitado"
     },
     {
-      "id": "1161",
-      "nome": "y9p",
+      "id": "689c",
+      "nome": "efw",
+      "carne": "Veggie burger",
+      "pao": "3 Queijos",
+      "opcionais": [
+        "Bacon"
+      ],
+      "status": "Solicitado"
+    },
+    {
+      "id": "8aaf",
+      "nome": "João",
       "carne": "Maminha",
       "pao": "3 Queijos",
-      "opcionais": [],
+      "opcionais": [
+        "Salame",
+        "Bacon",
+        "Cebola roxa",
+        "Tomate",
+        "Cheddar"
+      ],
       "status": "Solicitado"
     }
   ]
