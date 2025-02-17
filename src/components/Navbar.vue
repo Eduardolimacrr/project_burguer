@@ -32,7 +32,7 @@ export default {
 
   #logo {
     width: 40px;
-    height: 40px;
+    height: 40px; 
   }
 
   #nav a{

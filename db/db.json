@@ -111,6 +111,17 @@
         "Cheddar"
       ],
       "status": "Solicitado"
+    },
+    {
+      "id": "06e3",
+      "nome": "Jean",
+      "carne": "Maminha",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Cheddar",
+        "Tomate"
+      ],
+      "status": "Solicitado"
     }
   ]
 }

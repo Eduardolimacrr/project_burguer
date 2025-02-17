@@ -1,5 +1,5 @@
 <template>
-  <div id="main-banner">
+  <div id="main-banner" class="banner-class">
     <h1>Make Your Burger</h1>
   </div>
 </template>
