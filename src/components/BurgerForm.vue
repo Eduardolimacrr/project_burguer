@@ -2,20 +2,20 @@
   <div>
     <Message :msg="msg" v-show="msg" />
     <div>
-      <form id="burger-form" method="POST" @submit="createBurger">
+      <form class="burger-form" method="POST" @submit="createBurger">
         <div class="input-container">
-          <label for="nome">Nome do cliente: </label>
+          <label class="nome-label" for="nome">Nome do cliente: </label>
           <input
             type="text"
-            id="nome"
+            class="nome"
             name="nome"
             v-model="nome"
             placeholder="Digite o seu nome "
           />
         </div>
         <div class="input-container">
-          <label for="pao">Escolha o pão: </label>
-          <select name="pao" id="pao" v-model="pao">
+          <label class="pao">Escolha o pão: </label>
+          <select class="pao-select" name="pao" id="pao" v-model="pao">
             <option value="">Selecione o seu pão</option>
             <option v-for="pao in paes" :key="pao.id" :value="pao.tipo">
               {{ pao.tipo }}
@@ -23,16 +23,16 @@
           </select>
         </div>
         <div class="input-container">
-          <label for="carne ">Escolha a carne do seu burger: </label>
-          <select name="carne " id="carne " v-model="carne">
+          <label class="carne ">Escolha a carne do seu burger: </label>
+          <select class="carne-select" name="carne " id="carne " v-model="carne">
             <option value="">Selecione o tipo de carne</option>
             <option v-for="carne in carnes" :key="carne.id" :value="carne.tipo">
               {{ carne.tipo }}
             </option>
           </select>
         </div>
-        <div id="opcionais-container" class="input-container">
-          <label id="opcionais-title" for="opcionais"
+        <div class="opcionais-container input-container">
+          <label class="opcionais-title" for="opcionais"
             >Selecione os opcionais:</label
           >
           <div
@@ -128,7 +128,7 @@ export default {
 </script>
 
 <style scoped>
-#burger-form {
+.burger-form {
   max-width: 400px;
   margin: 0 auto;
 }
@@ -152,12 +152,12 @@ select {
   width: 100%;
 }
 
-#opcionais-container {
+.opcionais-container {
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-#opcionais-title {
+.opcionais-title {
   width: 100%;
 }
 

@@ -1,9 +1,9 @@
 <template>
-    <div id="burger-table">
+    <div class="burger-table">
            <Message :msg="msg" v-show="msg" />
 
         <div>
-            <div id="burger-table-heading">
+            <div class="burger-table-heading">
                 <div class="order-id">#:</div>
                 <div>Cliente:</div>
                 <div>Pão:</div>
@@ -12,7 +12,7 @@
                 <div>Ações:</div>
             </div>
         </div>
-        <div id="burger-table-rows">
+        <div class="burger-table-rows">
             <div class="burger-table-row" v-for="burger in burgers" :key="burger.id">
                 <div class="order-number">{{ burger.id }}</div>
                 <div>{{ burger.nome }}</div>
@@ -117,27 +117,27 @@ export default{
 
 <style scoped>
 
-#burger-table{
+.burger-table{
     max-width: 1200px;
     margin: 0 auto;
     
 }
 
 
-#burger-table-heading,
-#burger-table-rows,
+.burger-table-heading,
+.burger-table-rows,
 .burger-table-row{
     display: flex;
     flex-wrap: wrap;
 }
 
-#burger-table-heading{
+.burger-table-heading{
     font-weight: bold;
     padding: 12px;
     border-bottom: 3px solid #333;
 }
 
-#burger-table-heading div,
+.burger-table-heading div,
 .burger-table-row div {
     width: 19%;
 }
@@ -148,7 +148,7 @@ export default{
     border-bottom: 1px solid #ccc;
 }
 
-#burger-table-heading .order-id,
+.burger-table-heading .order-id,
 .burger-table-row .order-number {
     width: 5%;
 }

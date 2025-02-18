@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style>
-#footer {
+.footer-class {
   height: 200px;
   background-color: #222;
   border-top: 4px solid #111;
@@ -22,7 +22,7 @@ export default {
   width: 100%;
 }
 
-#footer p {
+.footer-class p {
   /* Adicione este estilo para o elemento <p> */
   color: #fcba03;
 }
