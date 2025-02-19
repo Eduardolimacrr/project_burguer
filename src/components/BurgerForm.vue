@@ -136,14 +136,14 @@ export default {
   display: flex;
   flex-direction: column;
   align-content: center;
-  margin-bottom: 38px;
+  margin-bottom: 8%;
 }
 label {
   font-weight: bold;
   font-size: x-large;
-  margin-bottom: 15px;
+  margin-bottom: 6%;
   color: #222;
-  padding: 5px 10px;
+  padding: 9px 10px;
   border-left: 4px solid #fcba03;
 }
 input,
