@@ -1,3 +1,4 @@
+// src/components/BurgerForm.vue
 <template>
   <div>
     <Message :msg="msg" v-show="msg" />
@@ -23,8 +24,13 @@
           </select>
         </div>
         <div class="input-container">
-          <label class="carne ">Escolha a carne do seu burger: </label>
-          <select class="carne-select" name="carne " id="carne " v-model="carne">
+          <label class="carne">Escolha a carne do seu burger: </label>
+          <select
+            class="carne-select"
+            name="carne "
+            id="carne "
+            v-model="carne"
+          >
             <option value="">Selecione o tipo de carne</option>
             <option v-for="carne in carnes" :key="carne.id" :value="carne.tipo">
               {{ carne.tipo }}
@@ -58,8 +64,8 @@
 </template>
 
 <script>
-
-import Message from './Message.vue';
+import molecular from "../services/molecular.js"; // Certifique-se de que o caminho está correto!
+import Message from "./Message.vue";
 
 export default {
   name: "BurgerForm",
@@ -97,22 +103,20 @@ export default {
         status: "Solicitado",
       };
 
-      const dataJson = JSON.stringify(data);
+      //OQ FEZ O PEDIDO DAR ERRO///////////////////////////////////////////////////////
 
-      const req = await fetch("http://localhost:3000/burgers", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },  // Corrigido o erro de digitação
-        body: dataJson,
-      });
-
-      const res = await req.json();
-
-      this.msg = `Pedido realizado com sucesso! Código: ${res.id}`;
+      try {
+        const res = await molecular.enviarPedido(data); // Envia o pedido para o Molecular via HTTP
+        this.msg = `Pedido realizado com sucesso! Resposta: ${res.mensagem}`;
+      } catch (error) {
+        console.error("Erro ao enviar pedido para o Molecular:", error);
+        this.msg = "Erro ao realizar o pedido. Tente novamente.";
+      }
 
       setTimeout(() => (this.msg = ""), 3000);
 
-      //limpar os campos
-        (this.nome = ""),
+      // Limpar os campos após o envio
+      (this.nome = ""),
         (this.carne = ""),
         (this.pao = ""),
         (this.opcionais = []);
@@ -122,10 +126,11 @@ export default {
     this.getIngredientes();
   },
   components: {
-    Message
-  }
+    Message,
+  },
 };
 </script>
+
 
 <style scoped>
 .burger-form {
