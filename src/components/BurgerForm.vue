@@ -86,6 +86,7 @@ export default {
       const req = await fetch("http://localhost:3000/ingredientes");
       const data = await req.json();
 
+
       this.paes = data.paes;
       this.carnes = data.carnes;
       this.opcionaisData = data.opcionais;
@@ -97,29 +98,33 @@ export default {
 
       const data = {
         nome: this.nome,
-        carne: this.carne,
         pao: this.pao,
-        opcionais: Array.from(this.opcionais),
+        carne: this.carne,
+        opcionais: this.opcionais,
         status: "Solicitado",
       };
 
       //OQ FEZ O PEDIDO DAR ERRO///////////////////////////////////////////////////////
 
-      try {
+       try {
         const res = await molecular.enviarPedido(data); // Envia o pedido para o Molecular via HTTP
-        this.msg = `Pedido realizado com sucesso! Resposta: ${res.mensagem}`;
+        this.msg = `Pedido realizado com sucesso ${res.nome}!`;
+
+        // Emite o evento para atualizar os pedidos na página de Dashboard
+        this.$emit('pedidoCriado', res); 
+
       } catch (error) {
         console.error("Erro ao enviar pedido para o Molecular:", error);
-        this.msg = "Erro ao realizar o pedido. Tente novamente.";
+        this.msg = `Erro ao realizar o pedido. Tente novamente. Detalhes do erro: ${error.message}`;
       }
 
       setTimeout(() => (this.msg = ""), 3000);
 
       // Limpar os campos após o envio
       (this.nome = ""),
-        (this.carne = ""),
-        (this.pao = ""),
-        (this.opcionais = []);
+      (this.pao = ""),
+      (this.carne = ""),
+      (this.opcionais = []);
     },
   },
   mounted() {
