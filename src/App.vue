@@ -34,14 +34,20 @@ export default {
   }
 
   .main-container {
-    margin: 50px;
+    margin: 55px;
     min-height: 250px;
+
   }
 
   h1 {
     text-align: center;
     font-size: 42px;
     margin-bottom: 30px;
-    color: #222;
+  
+    color: #ff9100;
   }
+  body {
+  background-color: #222; /* Troque para a cor desejada */
+  color: white; /* Ajusta a cor do texto */
+}
 </style>

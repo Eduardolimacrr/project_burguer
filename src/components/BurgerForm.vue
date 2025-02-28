@@ -16,7 +16,7 @@
         </div>
         <div class="input-container">
           <label class="pao">Escolha o pão: </label>
-          <select class="pao-select" name="pao" id="pao" v-model="pao">
+          <select class="pao-select" name="pao" id="pao" v-model="pao" placeholder="Selecione seu pão">
             <option value="">Selecione o seu pão</option>
             <option v-for="pao in paes" :key="pao.id" :value="pao.tipo">
               {{ pao.tipo }}
@@ -115,7 +115,7 @@ export default {
 
       } catch (error) {
         console.error("Erro ao enviar pedido para o Molecular:", error);
-        this.msg = `Erro ao realizar o pedido. Tente novamente. Detalhes do erro: ${error.message}`;
+        this.msg = `Erro ao realizar o pedido. Insira todos os dados necessários.`;
       }
 
       setTimeout(() => (this.msg = ""), 3000);
@@ -139,36 +139,55 @@ export default {
 
 <style scoped>
 .burger-form {
-  max-width: 400px;
+  max-width: 550px;
   margin: 0 auto;
+  padding: 3% 3%;
+  border-radius: 56px;
+  background-color: #333;
+  border: 5px solid #ff9100;
+  box-shadow: 0px 0px 30px rgba(255, 140, 0, 0.5);
+  align-items:flex-end;
+
+
 }
 .input-container {
   display: flex;
   flex-direction: column;
   align-content: center;
+  color: white;
   margin-bottom: 8%;
+  border-radius: 56px;
+  
+  
+
 }
 label {
   font-weight: bold;
   font-size: x-large;
-  margin-bottom: 6%;
-  color: #222;
+  margin-bottom: 8%;
+  color: white;
   padding: 9px 10px;
-  border-left: 4px solid #fcba03;
+  border-left: 4px solid #ff9100;
+  
 }
 input,
+
 select {
   padding: 5px 10px;
   width: 100%;
+  border-radius: 8px;
+  
 }
 
 .opcionais-container {
   flex-direction: row;
   flex-wrap: wrap;
+
 }
 
 .opcionais-title {
   width: 100%;
+
 }
 
 .checkbox-container {
@@ -181,20 +200,23 @@ select {
 .checkbox-container span,
 .checkbox-container input {
   width: auto;
+
 }
 
 .checkbox-container span {
   margin-left: 6px;
   font-weight: bold;
+  
 }
 
 .submit-btn {
   background-color: #222;
-  color: #fcba03;
+  color: #fffffe;
   font-weight: bold;
-  border: 2px solid #222;
+  border: 2px solid #ff9100;
+  border-radius: 50px;
   padding: 10px;
-  font-size: 16px;
+  font-size: 20px;
   margin: 0 auto;
   cursor: pointer;
   transition: 0.5s;
@@ -202,6 +224,14 @@ select {
 
 .submit-btn:hover {
   background-color: transparent;
-  color: #222;
+  color: #ff9100;
+  font-weight: bold;
+  box-shadow: 0px 0px 20px rgba(255, 140, 0, 0.5);
+  text-shadow: 0px 0px 20px rgba(112, 62, 1, 0.5);
+  color: #9e5a00;
+  
+  background-color: #cab989;
 }
+
+
 </style>

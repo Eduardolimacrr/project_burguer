@@ -118,7 +118,7 @@ export default {
 
       setTimeout(() => (this.msg = ""), 3000);
     },
-
+    
     async updateBurger(event, id) {
       const status = event.target.value;
 
@@ -150,6 +150,13 @@ export default {
 .burger-table {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 3%;
+  border-radius: 56px;
+  background-color: #222;
+  border: 5px solid #ff9100;
+  box-shadow: 0px 0px 30px rgba(255, 140, 0, 0.5);
+  color: white;
+  
 }
 
 .burger-table-heading,
@@ -161,45 +168,57 @@ export default {
 
 .burger-table-heading {
   font-weight: bold;
+  font-size: 24px;
   padding: 12px;
-  border-bottom: 3px solid #333;
+  border-bottom: 3px solid #ff9100;
+  
 }
 
 .burger-table-heading div,
 .burger-table-row div {
-  width: 19%;
+    display: flex;
+    width: 19%;
+  
 }
 
 .burger-table-row {
   width: 100%;
   padding: 12px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ff9100;
+  
 }
 
 .burger-table-heading .order-id,
 .burger-table-row .order-number {
-  width: 5%;
+    width: 5%;
+    
 }
 
 select {
   padding: 12px 6px;
   margin-right: 12px;
+  border-radius: 8px;
+  
 }
 
 .delete-btn {
   background-color: #222;
-  color: #fcba03;
+  color: #fffffe;
   font-weight: bold;
-  border: 2px solid #222;
+  border: 2px solid #ff9100;
+  border-radius: 50px;
   padding: 10px;
-  font-size: 16px;
+  width: 200px; 
+  height: 50px; 
   margin: 0 auto;
   cursor: pointer;
   transition: 0.5s;
+  
 }
 
 .delete-btn:hover {
   background-color: transparent;
-  color: #222;
+  color: #ff9100;
 }
+
 </style>

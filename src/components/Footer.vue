@@ -23,7 +23,6 @@ export default {
 }
 
 .footer-class p {
-  /* Adicione este estilo para o elemento <p> */
-  color: #fcba03;
+  color: #ff9100;
 }
 </style>

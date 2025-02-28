@@ -15,10 +15,11 @@ export default {
 
 <style >
     .message-container {
-        color: #004085;
-        background-color: #CCE5FF;
-        border: 2px solid #B8DAFF;
-        border-radius: 5px;
+        color: #ffffff;
+        background-color: #ff9100;
+        border: 2px solid #ffffff;
+        text-align: center;
+        border-radius: 8px;
         padding: 10px;
         max-width: 400px;
         margin: 30px auto;
