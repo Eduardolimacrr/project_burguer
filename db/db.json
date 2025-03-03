@@ -15,6 +15,14 @@
       },
       {
         "id": 4,
+        "tipo": "Australiano"
+      },
+      {
+        "id": 5,
+        "tipo": "Brioche"
+      },
+      {
+        "id": 6,
         "tipo": "Integral"
       }
     ],
@@ -33,13 +41,21 @@
       },
       {
         "id": 4,
+        "tipo": "Costela"
+      },
+      {
+        "id": 5,
+        "tipo": "Frango"
+      },
+      {
+        "id": 6,
         "tipo": "Veggie burger"
       }
     ],
     "opcionais": [
       {
         "id": 1,
-        "tipo": "Bacon"
+        "tipo": "Mussarela"
       },
       {
         "id": 2,
@@ -47,19 +63,27 @@
       },
       {
         "id": 3,
-        "tipo": "Salame"
+        "tipo": "Bacon"
       },
       {
         "id": 4,
-        "tipo": "Tomate"
+        "tipo": "Calabresa"
       },
       {
-        "id": 4,
+        "id": 5,
         "tipo": "Cebola roxa"
       },
       {
-        "id": 4,
+        "id": 6,
         "tipo": "Pepino"
+      },
+      {
+        "id": 7,
+        "tipo": "Tomate"
+      },
+      {
+        "id": 8,
+        "tipo": "Rúcula"
       }
     ]
   },

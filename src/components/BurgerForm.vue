@@ -1,7 +1,7 @@
 // src/components/BurgerForm.vue
 <template>
   <div>
-    <Message :msg="msg" v-show="msg" />
+    <Message :msg="msg" :type="msgType" v-show="msg" />
     <div>
       <form class="burger-form" method="POST" @submit="createBurger">
         <div class="input-container">
@@ -16,7 +16,7 @@
         </div>
         <div class="input-container">
           <label class="pao">Escolha o pão: </label>
-          <select class="pao-select" name="pao" id="pao" v-model="pao" placeholder="Selecione seu pão">
+          <select class="pao-select" name="pao" id="pao" v-model="pao">
             <option value="">Selecione o seu pão</option>
             <option v-for="pao in paes" :key="pao.id" :value="pao.tipo">
               {{ pao.tipo }}
@@ -25,12 +25,7 @@
         </div>
         <div class="input-container">
           <label class="carne">Escolha a carne do seu burger: </label>
-          <select
-            class="carne-select"
-            name="carne "
-            id="carne "
-            v-model="carne"
-          >
+          <select class="carne-select" name="carne" id="carne" v-model="carne">
             <option value="">Selecione o tipo de carne</option>
             <option v-for="carne in carnes" :key="carne.id" :value="carne.tipo">
               {{ carne.tipo }}
@@ -38,20 +33,9 @@
           </select>
         </div>
         <div class="opcionais-container input-container">
-          <label class="opcionais-title" for="opcionais"
-            >Selecione os opcionais:</label
-          >
-          <div
-            class="checkbox-container"
-            v-for="opcional in opcionaisData"
-            :key="opcional.id"
-          >
-            <input
-              type="checkbox"
-              name="opcionais"
-              v-model="opcionais"
-              :value="opcional.tipo"
-            />
+          <label class="opcionais-title" for="opcionais">Selecione os opcionais:</label>
+          <div class="checkbox-container" v-for="opcional in opcionaisData" :key="opcional.id">
+            <input type="checkbox" name="opcionais" v-model="opcionais" :value="opcional.tipo" />
             <span>{{ opcional.tipo }}</span>
           </div>
         </div>
@@ -64,7 +48,7 @@
 </template>
 
 <script>
-import molecular from "../services/molecular.js"; // Certifique-se de que o caminho está correto!
+import molecular from "../services/molecular.js";
 import Message from "./Message.vue";
 
 export default {
@@ -79,19 +63,16 @@ export default {
       carne: null,
       opcionais: [],
       msg: null,
+      msgType: null, // Para definir a classe da mensagem (sucesso ou erro)
     };
   },
   methods: {
     async getIngredientes() {
       const req = await fetch("http://localhost:3000/ingredientes");
       const data = await req.json();
-
-
       this.paes = data.paes;
       this.carnes = data.carnes;
       this.opcionaisData = data.opcionais;
-
-      console.log(data);
     },
     async createBurger(e) {
       e.preventDefault();
@@ -104,27 +85,27 @@ export default {
         status: "Solicitado",
       };
 
-      //OQ FEZ O PEDIDO DAR ERRO///////////////////////////////////////////////////////
+      try {
+        const res = await molecular.enviarPedido(data);
+        this.msg = `Pedido realizado com sucesso, ${res.nome}!`;
+        this.msgType = "success"; // Define como sucesso
 
-       try {
-        const res = await molecular.enviarPedido(data); // Envia o pedido para o Molecular via HTTP
-        this.msg = `Pedido realizado com sucesso ${res.nome}!`;
-
-        // Emite o evento para atualizar os pedidos na página de Dashboard
-        this.$emit('pedidoCriado', res); 
-
+        this.$emit("pedidoCriado", res);
       } catch (error) {
         console.error("Erro ao enviar pedido para o Molecular:", error);
         this.msg = `Erro ao realizar o pedido. Insira todos os dados necessários.`;
+        this.msgType = "error"; // Define como erro
       }
 
-      setTimeout(() => (this.msg = ""), 3000);
+      setTimeout(() => {
+        this.msg = "";
+        this.msgType = "";
+      }, 3000);
 
-      // Limpar os campos após o envio
-      (this.nome = ""),
-      (this.pao = ""),
-      (this.carne = ""),
-      (this.opcionais = []);
+      this.nome = "";
+      this.pao = "";
+      this.carne = "";
+      this.opcionais = [];
     },
   },
   mounted() {
